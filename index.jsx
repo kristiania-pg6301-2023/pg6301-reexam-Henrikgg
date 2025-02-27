@@ -32,14 +32,14 @@ function FrontPage() {
 
 
 
-function ListInnlegg()  {
+function ListInnlegg({innlegg})  {
         return <div>
             <h1>Innlegg</h1>
                 {innlegg.map(m =>
-                    <>
+                    <div key={m.title}>
                         <h2>{m.title} ({m.year})</h2>
                         <div>{m.plot}</div>
-                    </>
+                    </div>
                     )}
         </div>;
 }
@@ -49,7 +49,7 @@ function Application() {
         <Routes>
             <Route path="/" element={<FrontPage/>}/>
             <Route path="/Innlegg/nytt" element={<h1>Nytt innlegg</h1>}/>
-            <Route path="/Innlegg/" element={<h1><ListInnlegg/></h1>}/>
+            <Route path="/Innlegg/" element={<ListInnlegg innlegg={innlegg}/>}/>
         </Routes>
     </BrowserRouter>
 }
