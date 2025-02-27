@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter, Routes} from "react-router-dom";
+import {useState} from "react";
 
 
 const innlegg = [
@@ -44,11 +45,41 @@ function ListInnlegg({innlegg})  {
         </div>;
 }
 
+function NyttInnlegg(){
+
+        const [title, setTitle] = useState(" ");
+        const [year, setYear] = useState( " ");
+        const [plot, setPlot] = useState( " ")
+
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            innlegg.push({title, year, plot});
+        }
+
+
+
+
+        return <form onSubmit={handleSubmit}>
+            <h1>Nytt innlegg</h1>
+            <div>
+                <label>Title: <input value={title} onChange={e => setTitle(e.target.value)}/></label>
+            </div>
+            <div>
+                <label>Year: <input value={year} onChange={e => setYear(e.target.value)}/></label>
+            </div>
+            <div>
+                <label>Plot: <textarea value={plot} onChange={e => setPlot(e.target.value)}/></label>
+            </div>
+            <button>Submit</button>
+        </form>;
+}
+
 function Application() {
     return <BrowserRouter>
         <Routes>
             <Route path="/" element={<FrontPage/>}/>
-            <Route path="/Innlegg/nytt" element={<h1>Nytt innlegg</h1>}/>
+            <Route path="/Innlegg/nytt" element={<h1><NyttInnlegg/></h1>}/>
             <Route path="/Innlegg/" element={<ListInnlegg innlegg={innlegg}/>}/>
         </Routes>
     </BrowserRouter>
