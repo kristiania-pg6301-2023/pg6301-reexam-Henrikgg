@@ -1,0 +1,29 @@
+{
+  "name": "pg6301-reexam-henrikgg",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/nHPSu_dn)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristiania-pg6301-2023/pg6301-reexam-Henrikgg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristiania-pg6301-2023/pg6301-reexam-Henrikgg/issues"
+  },
+  "homepage": "https://github.com/kristiania-pg6301-2023/pg6301-reexam-Henrikgg#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@types/react-dom": "^19.0.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  }
+}
