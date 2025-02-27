@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter, Routes} from "react-router-dom";
+import {Route, Link, BrowserRouter, Routes, useNavigate} from "react-router-dom";
 import {useState} from "react";
 
 
@@ -45,16 +45,31 @@ function ListInnlegg({innlegg})  {
         </div>;
 }
 
-function NyttInnlegg(){
+
+
+
+
+
+function NyttInnlegg({onNyttInnlegg}) {
 
         const [title, setTitle] = useState(" ");
         const [year, setYear] = useState( " ");
         const [plot, setPlot] = useState( " ")
 
 
+
+
+        const navigate = useNavigate();
+
+
+
+
+
+
         function handleSubmit(e) {
             e.preventDefault();
-            innlegg.push({title, year, plot});
+            onNyttInnlegg.push({title, year, plot});
+            navigate("/");
         }
 
 
@@ -79,7 +94,7 @@ function Application() {
     return <BrowserRouter>
         <Routes>
             <Route path="/" element={<FrontPage/>}/>
-            <Route path="/Innlegg/nytt" element={<h1><NyttInnlegg/></h1>}/>
+            <Route path="/Innlegg/nytt" element={<NyttInnlegg onNyttInnlegg={m => innlegg.push(m)}/>}/>
             <Route path="/Innlegg/" element={<ListInnlegg innlegg={innlegg}/>}/>
         </Routes>
     </BrowserRouter>
