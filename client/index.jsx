@@ -4,20 +4,6 @@ import {Route, Link, BrowserRouter, Routes, useNavigate} from "react-router-dom"
 import {useState, useEffect} from "react";
 
 
-const innlegg = [
-    {
-        title: "Hun sa dette omg!!!!..",
-        plot: "Det hele starten med.....",
-        year: 2025
-    },
-    {
-        title: "Han sa dette omg!..",
-        plot: "Det hele started med....",
-        year: 2024
-    }
-];
-
-
 
 function FrontPage() {
         return <div>
@@ -104,7 +90,15 @@ function NyttInnlegg({innleggsApi}) {
 function Application() {
 
     const innleggsApi = {
-        onNyttInnlegg: async (m) => innlegg.push(m),
+        onNyttInnlegg: async (m) => {
+            await fetch( "/api/innlegg", {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body:JSON.stringify(m)
+         })
+        },
         listInnlegg: async () => {
             const res = await fetch("/api/innlegg");
             return res.json();

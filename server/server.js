@@ -1,5 +1,6 @@
 import express from "express"
 import path from "path";
+import bodyParser from "body-parser";
 
 const app = express();
 
@@ -17,11 +18,19 @@ const innlegg = [
     }
 ];
 
+app.use(bodyParser.json());
+
+
 app.get("/api/innlegg", (req, res ) => {
     res.json(innlegg);
 
 });
 
+app.post("/api/innlegg",(req, res) =>  {
+    const {title, year, plot} = req.body;
+    innlegg.push({title, year, plot});
+    res.sendStatus(200);
+})
 
 
 
