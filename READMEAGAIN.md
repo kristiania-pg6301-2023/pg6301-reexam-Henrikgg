@@ -8,4 +8,12 @@
 * [x] Express app
 * [x] Move API to server
 * [ ] Deploy to Heroku
-* 
+
+KILDER:
+
+All kode er skrevet ned etter denne forelesningen:
+
+https://kristiania.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=6c5e2db7-e253-4ee7-8f25-ae1c011832ef
+
+
+
