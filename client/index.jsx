@@ -46,7 +46,7 @@ function ListInnlegg({innleggsApi})  {
 
 
         return <div>
-            <h1>Innlegg</h1>
+            <h1>Alle innlegg</h1>
                 {innlegg.map(m =>
                     <div key={m.title}>
                         <h2>{m.title} ({m.year})</h2>
