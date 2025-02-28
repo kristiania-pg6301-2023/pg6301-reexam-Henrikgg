@@ -17,15 +17,26 @@ const innlegg = [
     }
 ];
 
-
-app.use(express.static(path.resolve("../dist")));
-
-
-
 app.get("/api/innlegg", (req, res ) => {
     res.json(innlegg);
 
 });
+
+
+
+
+
+
+
+app.use(express.static(path.resolve("../dist")));
+app.use((req, res) => {
+    res.sendFile(path.resolve("..", "dist", "index.html"));
+})
+
+
+
+
+
 
 
 const server = app.listen(3000,() => {
