@@ -6,7 +6,7 @@ import {useState, useEffect} from "react";
 
 const innlegg = [
     {
-        title: "Hun sa dette omg!..",
+        title: "Hun sa dette omg!!!!..",
         plot: "Det hele starten med.....",
         year: 2025
     },
@@ -105,7 +105,10 @@ function Application() {
 
     const innleggsApi = {
         onNyttInnlegg: async (m) => innlegg.push(m),
-        listInnlegg: async () => innlegg
+        listInnlegg: async () => {
+            const res = await fetch("/api/innlegg");
+            return res.json();
+        }
     }
 
 

@@ -6,8 +6,8 @@ const app = express();
 
 const innlegg = [
     {
-        title: "Hun sa dette omg!..",
-        plot: "Det hele starten med.....",
+        title: "Hun sa dette omg!!!!..",
+        plot: "Det hele starten med..............",
         year: 2025
     },
     {
@@ -28,9 +28,9 @@ app.get("/api/innlegg", (req, res ) => {
 
 
 
-app.use(express.static(path.resolve("..","client", "dist")));
+app.use(express.static(path.resolve("..", "client", "dist")));
 app.use((req, res) => {
-    res.sendFile(path.resolve("..","client", "dist", "index.html"));
+    res.sendFile(path.resolve("..", "client", "dist", "index.html"));
 })
 
 
