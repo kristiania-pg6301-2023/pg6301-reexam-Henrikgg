@@ -15,7 +15,7 @@ const innlegg = [
         plot: "Det hele started med....",
         year: 2024
     }
-]
+];
 
 
 
