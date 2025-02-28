@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Route, Link, BrowserRouter, Routes, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
 const innlegg = [
@@ -33,7 +33,18 @@ function FrontPage() {
 
 
 
-function ListInnlegg({innlegg})  {
+function ListInnlegg({innleggsApi})  {
+    const [innlegg, setInnlegg] = useState();
+    useEffect(async () => {
+        setInnlegg(undefined);
+        setInnlegg(await  innleggsApi.listInnlegg());
+    }, []);
+
+    if (!innlegg) {
+        return <div>Loading...</div>
+    }
+
+
         return <div>
             <h1>Innlegg</h1>
                 {innlegg.map(m =>
@@ -50,7 +61,7 @@ function ListInnlegg({innlegg})  {
 
 
 
-function NyttInnlegg({onNyttInnlegg}) {
+function NyttInnlegg({innleggsApi}) {
 
         const [title, setTitle] = useState(" ");
         const [year, setYear] = useState( " ");
@@ -66,9 +77,9 @@ function NyttInnlegg({onNyttInnlegg}) {
 
 
 
-        function handleSubmit(e) {
+        async function handleSubmit(e) {
             e.preventDefault();
-            onNyttInnlegg.push({title, year, plot});
+            await innleggsApi.onNyttInnlegg({title, year, plot});
             navigate("/");
         }
 
@@ -91,14 +102,26 @@ function NyttInnlegg({onNyttInnlegg}) {
 }
 
 function Application() {
+
+    const innleggsApi = {
+        onNyttInnlegg: async (m) => innlegg.push(m),
+        listInnlegg: async () => innlegg
+    }
+
+
+
+
+
+
     return <BrowserRouter>
         <Routes>
             <Route path="/" element={<FrontPage/>}/>
-            <Route path="/Innlegg/nytt" element={<NyttInnlegg onNyttInnlegg={m => innlegg.push(m)}/>}/>
-            <Route path="/Innlegg/" element={<ListInnlegg innlegg={innlegg}/>}/>
+            <Route path="/Innlegg/nytt" element={<NyttInnlegg innleggsApi={innleggsApi}/>}/>
+            <Route path="/Innlegg/" element={<ListInnlegg innleggsApi={innleggsApi}/>}/>
         </Routes>
     </BrowserRouter>
 }
+
 
 ReactDOM.render(
     <h1><Application/></h1>,
