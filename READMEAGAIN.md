@@ -4,8 +4,8 @@
 * [x] Routing requests in React - navigate
 * [x] List exisiting Innlegg
 * [x] Add new Innlegg using forms and state
-* [ ] Encapsulate Sosiale Medier database
-* [ ] Express app
-* [ ] Move API to server
+* [x] Encapsulate Sosiale Medier database
+* [x] Express app
+* [x] Move API to server
 * [ ] Deploy to Heroku
 * 
